@@ -41,6 +41,7 @@ resource "docker_container" "app1" {
     internal = 80
     external = 8001
   }
+  restart = "unless-stopped"
 }
 
 resource "docker_container" "app2" {
@@ -56,6 +57,7 @@ resource "docker_container" "app2" {
     internal = 80
     external = 8002
   }
+  restart = "unless-stopped"
 }
 
 resource "docker_container" "app3" {
@@ -71,6 +73,7 @@ resource "docker_container" "app3" {
     internal = 80
     external = 8003
   }
+  restart = "unless-stopped"  
 }
 
 // Volumen de persistencia de Postgres
@@ -89,6 +92,7 @@ resource "docker_container" "redis" {
     internal = 6379
     external = var.redis_port
   }
+  restart = "unless-stopped"
 }
 
 // Contenedor de Postgres
@@ -111,4 +115,5 @@ resource "docker_container" "postgres" {
     internal = 5432
     external = var.postgres_host_port
   }
+  restart = "unless-stopped"
 }
