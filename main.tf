@@ -34,6 +34,9 @@ resource "docker_container" "app1" {
   networks_advanced {
     name  = "app_net"
   }
+  networks_advanced {
+    name = docker_network.persistence_net.name
+  }
   ports {
     internal = 80
     external = 8001
@@ -46,6 +49,9 @@ resource "docker_container" "app2" {
   networks_advanced {
     name  = "app_net"
   }
+  networks_advanced {
+    name = docker_network.persistence_net.name
+  }
   ports {
     internal = 80
     external = 8002
@@ -57,6 +63,9 @@ resource "docker_container" "app3" {
   image   = "nginx:stable-alpine3.21-perl"
   networks_advanced {
     name  = "app_net"
+  }
+  networks_advanced {
+    name = docker_network.persistence_net.name
   }
   ports {
     internal = 80
@@ -96,7 +105,7 @@ resource "docker_container" "postgres" {
   }
   volumes {
     volume_name     = docker_volume.pg_data.name
-    container_path  = ""
+    container_path  = "/var/lib/postgresql/data"
   }
   ports {
     internal = 5432
