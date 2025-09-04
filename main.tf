@@ -68,3 +68,16 @@ resource "docker_container" "app3" {
 resource "docker_volume" "pg_data" {
   name = var.postgres_volumne_name
 }
+
+// Contenedor de Redis
+resource "docker_container" "redis" {
+  name    = "redis"
+  image   = var.redis_image
+  networks_advanced {
+    name = "persistence_net"
+  }
+  ports {
+    internal = var.redis_port
+    external = var.redis_hot_port
+  }
+}
