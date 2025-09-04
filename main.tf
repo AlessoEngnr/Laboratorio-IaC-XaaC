@@ -78,7 +78,7 @@ resource "docker_container" "app3" {
 
 // Volumen de persistencia de Postgres
 resource "docker_volume" "pg_data" {
-  name = var.postgres_volumne_name
+  name = var.postgres_volume_name
 }
 
 // Contenedor de Redis

@@ -16,7 +16,7 @@ variable "postgres_image" {
   type      = string
   default   = "postgres:13.22-alpine3.22"
 }
-variable "postgres_volumne_name" {
+variable "postgres_volume_name" {
   type      = string
   default   = "pg_data"
 }
