@@ -100,6 +100,6 @@ resource "docker_container" "postgres" {
   }
   ports {
     internal = 5432
-    external = var.
+    external = var.postgres_host_port
   }
 }
