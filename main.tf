@@ -81,3 +81,25 @@ resource "docker_container" "redis" {
     external = var.redis_hot_port
   }
 }
+
+// Contenedor de Postgres
+resource "docker_container" "postgres" {
+  name    = "postgres"
+  image   = var.postgres_image
+  env = [
+    "POSTGRES_USER=${var.postgres_user}",
+    "POSTGRES_PASSWORD=${var.postgres_password}",
+    "POSTGRES_DB=${var.postgres_db}",
+  ]
+  networks_advanced {
+    name = "persistence_net"
+  }
+  volumes {
+    volume_name     = docker_volume.pg_data.name
+    container_path  = ""
+  }
+  ports {
+    internal = 5432
+    external = var.
+  }
+}

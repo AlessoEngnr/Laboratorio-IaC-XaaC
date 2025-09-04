@@ -20,6 +20,10 @@ variable "postgres_volumne_name" {
   type      = string
   default   = "pg_data"
 }
+variable "postgres_host_port" {
+  type      = number
+  default   = 5432
+}
 
 // Variables de Redis
 variable "redis_image" {
@@ -29,8 +33,4 @@ variable "redis_image" {
 variable "redis_port" {
   type      = number
   default   = 6379
-}
-variable "redis_hot_port" {
-  type      = number
-  default   = 5432
 }
