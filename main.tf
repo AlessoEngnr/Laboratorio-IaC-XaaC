@@ -77,8 +77,8 @@ resource "docker_container" "redis" {
     name = "persistence_net"
   }
   ports {
-    internal = var.redis_port
-    external = var.redis_hot_port
+    internal = 6379
+    external = var.redis_port
   }
 }
 
